@@ -1,0 +1,23 @@
+services:
+  dori:
+    build: ./Dori
+    image: dori-bot
+    container_name: dori-bot
+    restart: unless-stopped
+    env_file:
+      - ./Dori/.env
+
+  nemo:
+    build: ./Nemo
+    image: nemo-bot
+    container_name: nemo-bot
+    restart: unless-stopped
+    env_file:
+      - ./Nemo/.env
+    environment:
+      DB_PATH: /data/nemo.db
+    volumes:
+      - nemo-data:/data
+
+volumes:
+  nemo-data:

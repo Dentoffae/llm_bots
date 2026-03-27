@@ -1,0 +1,8 @@
+services:
+  dori:
+    build: .
+    image: dori-bot
+    container_name: dori-bot
+    restart: unless-stopped
+    env_file:
+      - .env
